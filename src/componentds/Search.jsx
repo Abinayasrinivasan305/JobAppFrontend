@@ -15,25 +15,26 @@ const Search = () => {
   const token = localStorage.getItem('token');
   const userData = decodeToken(token);
   const role = userData?.role?.replace(/^ROLE_/, '');
+const fetchPosts = async () => {
+  try {
+    const res = await api.get("/jobs");
+    console.log("Fetched jobs:", res.data); // 👈 add this
+    setPosts(Array.isArray(res.data) ? res.data : res.data.jobs || []);
+  } catch (err) {
+    console.error("Failed to fetch posts:", err);
+    setPosts([]); // fallback so .map never breaks
+  }
+};
 
-  const fetchPosts = async () => {
-    try {
-      const res = await api.get("/jobs");
-      setPosts(res.data || []);
-    } catch (err) {
-      console.error("Failed to fetch posts:", err);
-    }
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
 
   const handleSearch = async () => {
     if (!keyword.trim()) return fetchPosts();
     try {
+
       const res = await api.get(`/jobs/keyword/${keyword}`);
-      setPosts(res.data || []);
+      console.log("Search response:", res.data);
+     setPosts(Array.isArray(res.data) ? res.data : res.data.jobs || []);
+
     } catch (err) {
       console.error("Search failed:", err);
     }
