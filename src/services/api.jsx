@@ -3,9 +3,8 @@ import { toast } from "react-toastify";
 import { showLoader, hideLoader } from "../utils/loaderUtils";
 
 const api = axios.create({
-  baseURL: "https://jobappbacckend-3.onrender.com/", // your backend base URL
-  // do NOT set Authorization here
-  withCredentials: false, // true only if backend uses cookies
+  baseURL: import.meta.env.VITE_API_BASE_URL, // uses your .env backend URL
+  withCredentials: false, // since JWT is in header, not cookies
 });
 
 // Request interceptor to attach token dynamically
