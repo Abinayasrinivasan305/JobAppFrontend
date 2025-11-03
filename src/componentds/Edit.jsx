@@ -23,7 +23,7 @@ const handleAddSkill = () => { if (skill.trim() && !form.postTechStack.includes(
 const handleRemoveSkill = (s) => { setForm({ ...form, postTechStack: form.postTechStack.filter((sk) => sk !== s) }); };
 
 
-const handleSubmit = async (e) => { e.preventDefault(); await api.put(`/jobs/admin/${form.postId}`, form); navigate('/'); };
+const handleSubmit = async (e) => { e.preventDefault(); await api.put(`apis/jobs/admin/${form.postId}`, form); navigate('/'); };
 
 
 return (

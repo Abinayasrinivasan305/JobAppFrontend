@@ -17,7 +17,7 @@ export default function AdminDashboard() {
     try {
       const userData = decodeToken(token);
       const adminEmail = userData?.sub;
-      const res = await api.get("/jobs/admin", {
+      const res = await api.get("api/jobs/admin", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const filteredJobs = res.data.filter((job) => job.createdBy === adminEmail);
@@ -31,7 +31,7 @@ export default function AdminDashboard() {
     const token = getToken();
     if (!token) return;
     try {
-      await api.delete(`/jobs/admin/${id}`, {
+      await api.delete(`api/jobs/admin/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       loadJobs();

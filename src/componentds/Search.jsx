@@ -17,7 +17,7 @@ const Search = () => {
   const role = userData?.role?.replace(/^ROLE_/, '');
 const fetchPosts = async () => {
   try {
-    const res = await api.get("/jobs");
+    const res = await api.get("api/jobs");
     console.log("Fetched jobs:", res.data); // 👈 add this
     setPosts(Array.isArray(res.data) ? res.data : res.data.jobs || []);
   } catch (err) {
@@ -31,7 +31,7 @@ const fetchPosts = async () => {
     if (!keyword.trim()) return fetchPosts();
     try {
 
-      const res = await api.get(`/jobs/keyword/${keyword}`);
+      const res = await api.get(`api/jobs/keyword/${keyword}`);
       console.log("Search response:", res.data);
      setPosts(Array.isArray(res.data) ? res.data : res.data.jobs || []);
 
