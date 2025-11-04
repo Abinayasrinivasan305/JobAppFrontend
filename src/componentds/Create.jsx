@@ -32,7 +32,7 @@ const Create = () => {
     const decoded = decodeToken(token);
     const jobData = { ...form, createdBy: decoded.sub };
 
-    await api.post("api/jobs/admin/add", jobData, {
+    await api.post("/jobs/admin/add", jobData, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

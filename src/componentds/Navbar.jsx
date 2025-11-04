@@ -18,19 +18,19 @@ export default function Navbar() {
   useEffect(() => {
     if (token && isTokenExpired(token)) {
       logout();
-      navigate('api/auth/login');
+      navigate('/login');
     }
   }, [token, navigate]);
 
   const onLogout = () => {
     logout();
-    navigate('api/auth/login');
+    navigate('/login');
   };
 
   const handleHomeClick = () => {
     if (!role) {
       toast.info("Please login before viewing the homepage.");
-      navigate('api/auth/login');
+      navigate('/login');
     } else {
       navigate('/');
     }

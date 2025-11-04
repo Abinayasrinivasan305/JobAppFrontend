@@ -44,7 +44,7 @@ export default function SuperAdminDashboard() {
       if (!token) return;
       const userData = decodeToken(token);
       const superAdminEmail = userData?.sub;
-      const res = await api.get("api/jobs/admin", {
+      const res = await api.get("/jobs/admin", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const filteredJobs = res.data.filter((job) => job.createdBy === superAdminEmail);

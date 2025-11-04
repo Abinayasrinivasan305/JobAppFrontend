@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { showLoader, hideLoader } from "../utils/loaderUtils";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL, // uses your .env backend URL
+  baseURL: import.meta.env.VITE_API_BASE, // uses your .env backend URL
   withCredentials: false, // since JWT is in header, not cookies
 });
 

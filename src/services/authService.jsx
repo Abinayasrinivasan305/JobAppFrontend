@@ -1,10 +1,10 @@
 import api from "./api";
 
 // Register
-export const register = (payload) => api.post("api/auth/register", payload);
+export const register = (payload) => api.post("/auth/register", payload);
 
 // Login
-export const login = (payload) => api.post("api/auth/login", payload);
+export const login = (payload) => api.post("/auth/login", payload);
 
 // Logout
 export const logout = () => localStorage.clear();
