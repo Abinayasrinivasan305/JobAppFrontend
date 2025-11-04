@@ -24,13 +24,13 @@ export default function Navbar() {
 
   const onLogout = () => {
     logout();
-    navigate('api/auth/login');
+    navigate('/login');
   };
 
   const handleHomeClick = () => {
     if (!role) {
       toast.info("Please login before viewing the homepage.");
-      navigate('api/auth/login');
+      navigate('/login');
     } else {
       navigate('/');
     }
