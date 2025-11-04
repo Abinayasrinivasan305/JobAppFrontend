@@ -28,7 +28,7 @@ export default function Login() {
     e.preventDefault();
     setError(null);
     try {
-      const res = await api.post('auth/login', form);
+      const res = await api.post('api/auth/login', form);
       const token = res.data.token;
       localStorage.setItem('token', token);
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
